@@ -1,46 +1,63 @@
 const express = require("express")
 const app = express()
-const mongoose = require("mongoose")
-const seedData =require("./models/seedData")
-const product = require("./models/products")
+const mongoose =require("mongoose")
 const methodOverride = require("method-override")
-const Product = require('./models/products');
-// const thisController = require("./controllers/thisController")
+
+
+
 
 require("dotenv").config()
 const PORT = process.env.PORT
 
+// Database Connection
 mongoose.connect(process.env.DATABASE_URL, {
     useNewUrlParser: true,
-    unseUnifiedTopology: true,
-})
-
+    useUnifiedTopology: true,
+  })
+  
+// Database Connection Error/Success
+// Define callback functions for various events
 const db = mongoose.connection
-db.on("error", (err) => console.log(err.message +" is mongo running"))
-db.on("connected", () => console.log ("mongo connected"))
-db.on('disconnected', () => console.log("mongo disconnected"))
+db.on("error", (err) => console.log(err.message + " is mongo not running?"))
+db.on("connected", () => console.log("mongo connected"))
+db.on("disconnected", () => console.log("mongo disconnected"))
 
+//middleware
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride("_method"))
-app.use(express.json())
-app.use("/index", thisController)
 app.use(express.static("public"))
 
-// FOLLOW INDUCES!
 
-// Seed
-app.get("/product/seed", (req, res) => {
-    product.deleteMany({}, (error, allProducts) => {})
-    product.create(productData, (error, data) => {
-      res.redirect("/productss");
-    });
-  })
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+app.use(express.static("public"))
+app.use(methodOverride("_method"))
 
-app.get("/products", (req, res) => {
-    res.send("my index page is working!")
+
+
+// Follow INDUCES
+//index
+app.get("/logs", (req, res) => {
+    res.send("Your in cult, call your dad!")
+})
+
+app.get("/logs/new", (req, res) => {
+    res.send("Elvis do you want a cookie?")
+
+})
+
+app.delete("/logs", (req, res) => {
+    res.send("I'll flip that switch?")
+})
+
+app.get("/logs/:id", (req, res) => {
+    res.send("favorite one")
 })
 
 
-app.listen("PORT", () => {
-    console.log("stay sexy don't get murdered!")
+
+
+app.listen(PORT, () => {
+    console.log("stay sexy don't get murdered?")
 })
+
