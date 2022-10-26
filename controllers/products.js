@@ -7,7 +7,9 @@ const productSeed = require("../models/seedData")
 
 productRouter.get("/", (req, res) => {
     Products.find({}, (error, allProducts) => {
-        res.render("index.ejs", { products: Products})
+        console.log(Products)
+        res.render("index.ejs", { 
+            products: allProducts})
     })
 })
 // new
@@ -34,7 +36,7 @@ productRouter.put("/:id", (req, res) => {
 })
 
 // create
-productRouter.post("/", (req, res) => {
+productRouter.post("/products", (req, res) => {
     req.body.completed = req.body.completed === "on" ? true : false;
     Products.create(req.body, (error, createdProduct) => {
         res.redirect("/products")

@@ -1,4 +1,4 @@
-const product =[
+const productSeed =[
     {
       name: "Beans",
       description:
@@ -23,4 +23,4 @@ const product =[
     },
   ]
 
-  module.exports = product
+  module.exports = productSeed
