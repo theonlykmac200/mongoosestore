@@ -43,7 +43,7 @@ productRouter.post("/", (req, res) => {
 
 //edit
 productRouter.get("/:id/edit", (req, res) => {
-    Book.findById(req.params.id, (err, foundProduct) => {
+    Product.findById(req.params.id, (err, foundProduct) => {
         res.render("edit.ejs", {Products : foundProduct})
     })
 })
