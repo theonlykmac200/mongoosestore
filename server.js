@@ -37,20 +37,20 @@ app.use(methodOverride("_method"))
 
 // Follow INDUCES
 //index
-app.get("/logs", (req, res) => {
+app.get("/products", (req, res) => {
     res.send("Your in cult, call your dad!")
 })
 
-app.get("/logs/new", (req, res) => {
+app.get("/products/new", (req, res) => {
     res.send("Elvis do you want a cookie?")
 
 })
 
-app.delete("/logs", (req, res) => {
+app.delete("/products", (req, res) => {
     res.send("I'll flip that switch?")
 })
 
-app.get("/logs/:id", (req, res) => {
+app.get("/products/:id", (req, res) => {
     res.send("favorite one")
 })
 
