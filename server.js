@@ -1,7 +1,8 @@
 const express = require("express")
 const app = express()
-const mongoose =require("mongoose")
+const mongoose = require("mongoose")
 const methodOverride = require("method-override")
+const productController = require("./controllers/products")
 
 
 
@@ -26,33 +27,13 @@ db.on("disconnected", () => console.log("mongo disconnected"))
 app.use(express.urlencoded({extended: true}))
 app.use(methodOverride("_method"))
 app.use(express.static("public"))
-
+app.use("/products", productController)
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
 app.use(express.static("public"))
 app.use(methodOverride("_method"))
 
-
-
-// Follow INDUCES
-//index
-app.get("/products", (req, res) => {
-    res.send("Your in cult, call your dad!")
-})
-
-app.get("/products/new", (req, res) => {
-    res.send("Elvis do you want a cookie?")
-
-})
-
-app.delete("/products", (req, res) => {
-    res.send("I'll flip that switch?")
-})
-
-app.get("/products/:id", (req, res) => {
-    res.send("favorite one")
-})
 
 
 

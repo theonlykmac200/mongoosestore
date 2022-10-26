@@ -23,4 +23,4 @@ const product =[
     },
   ]
 
-  module.exports = products
+  module.exports = product
