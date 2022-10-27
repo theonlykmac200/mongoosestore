@@ -20,6 +20,7 @@ productRouter.get("/new", (req, res) => {
 productRouter.delete("/:id", (req, res) => {
     Products.findByIdAndRemove(req.params.id, (err, deletedProduct) => {
         res.redirect("/products")
+        console.log(err)
     })
 })
 //update
@@ -58,11 +59,11 @@ productRouter.get("/:id", (req, res) => {
     })
 })
 
-// Seed
-productRouter.get("/seed", (req, res) => {
-    Products.create(productSeed, (error, data) => {
-      res.redirect("/products");
-    });
-  })
+// // Seed -not needed may delete later
+// productRouter.get("/seed", (req, res) => {
+//     Products.create(productSeed, (error, data) => {
+//       res.redirect("/products");
+//     });
+//   })
 
 module.exports = productRouter

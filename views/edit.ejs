@@ -17,5 +17,15 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <h1>edit this product</h1>
+
+        <form action="/products/<%=products._id%>?_method=PUT" method="post">
+            Name: <input type="text" name="name" value="<%=products.name%>"/><br/>
+            Description: <input type="text" name="description" value="<%=products.description%>"/><br/>
+            price: <input type="number" name="price" value="<%=products.price%>"/><br/>
+            qty: <input type="number" name="qty" value="<%=products.qty%>"/><br/>
+            Image: <input type="text" name="img" value="<%=products.img%>"/><br/>
+    
+            <input type="submit" name="" value="Submit Changes"/>
+            
     </body>
 </html>

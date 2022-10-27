@@ -22,7 +22,15 @@
         price: <%=products.price%><br/>
         qty:<%=products.qty%><br/>
         Image:<img src="<%=products.img%>"><br/>
+
+        <a href="/products/<%= products._id %>/edit">EDIT</a>
+
+        <form action="/products/<%=products._id%>?_method=DELETE" method="POST">
+            <input type="submit" value="DELETE"/>
+        </form>
       
+        <a href="/products/">GO HOME</a>
+        <button> Buy this RIGHT now!</button>
 
     </body>
 </html>
