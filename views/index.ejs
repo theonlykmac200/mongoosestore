@@ -17,5 +17,15 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <h1>the only kmac's store</h1>
+        <% products.forEach(product => {%>
+            <div class="div-index">
+                <h3 class="h1-index"><%= product.name%></h3>
+                <a href ="/products/<%=product._id%>"><img src="<%= product.img%>"></a>
+            </div>
+            <%})%>
+
+            <a href="/products/new">Add a Product</a>
+    
+
     </body>
 </html>

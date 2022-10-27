@@ -29,16 +29,9 @@ app.use(methodOverride("_method"))
 app.use(express.static("public"))
 app.use("/products", productController)
 
-app.use(express.urlencoded({extended:true}))
-app.use(express.json())
-app.use(express.static("public"))
-app.use(methodOverride("_method"))
-
-
-
 
 
 app.listen(PORT, () => {
-    console.log("stay sexy don't get murdered?")
+    console.log("stay sexy don't get murdered!")
 })
 

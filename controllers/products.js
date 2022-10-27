@@ -24,21 +24,19 @@ productRouter.delete("/:id", (req, res) => {
 })
 //update
 productRouter.put("/:id", (req, res) => {
-    req.body.completed = (req.body.completed === "on") ? true: false;
     Products.findByIdAndUpdate(
         req.params.id,
         req.body,
         {new: true},
         (err, updatedProduct) => {
-            res.redirect(`/books/${req.params.id}`)
+            res.redirect(`/products/${req.params.id}`)
         }
     )
 })
 
 // create
-productRouter.post("/products", (req, res) => {
-    req.body.completed = req.body.completed === "on" ? true : false;
-    Products.create(req.body, (error, createdProduct) => {
+productRouter.post("/", (req, res) => {
+    Products.create(req.body, (err, createdProduct) => {
         res.redirect("/products")
     })
 })
@@ -46,7 +44,7 @@ productRouter.post("/products", (req, res) => {
 //edit
 productRouter.get("/:id/edit", (req, res) => {
     Products.findById(req.params.id, (err, foundProduct) => {
-        res.render("edit.ejs", {Products : foundProduct})
+        res.render("edit.ejs", {products : foundProduct})
     })
 })
 
@@ -56,14 +54,13 @@ productRouter.get("/:id/edit", (req, res) => {
 
 productRouter.get("/:id", (req, res) => {
     Products.findById(req.params.id, (err, foundProduct) =>{
-        res.render("show.ejs", {Products: foundProduct})
+        res.render("show.ejs", {products: foundProduct})
     })
 })
 
 // Seed
 productRouter.get("/seed", (req, res) => {
-    Products.deleteMany({}, (error, allProducts) => {})
-    Products.create(productData, (error, data) => {
+    Products.create(productSeed, (error, data) => {
       res.redirect("/products");
     });
   })
