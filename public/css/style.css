@@ -1,3 +1,46 @@
 body {
     margin: 50px 100px;
+
+}
+.h1-index, .h1-show, .h1-edit, .h1-new{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+img {
+    height: 200px;
+    width: 300px;
+    border-radius: 20%;
+    padding: 8px;
+    box-shadow: 3px;
+
+}
+.div-index{
+    display: inline-block; 
+    align-content: space-between;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    margin-top: 5px;
+    
+}
+.div-show {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 500px;
+}
+.bolded { font-weight: bold; }
+
+.row .col {
+    padding: 0 7.75rem
+}
+
+.button-under-buy {
+    display: flex;
+    flex-direction: row;
+    margin-top: 5px;
+}
+a {
+    margin-top: 5px;
 }

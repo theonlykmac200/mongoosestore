@@ -5,20 +5,20 @@
 <!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html>
     <%- include('./partials/head.ejs')%>
-    <body>
+    <body class ="#ede7f6 deep-purple lighten-5">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h1>edit this product</h1>
+        <h1 class="h1-edit">Edit This Product</h1>
 
         <form action="/products/<%=products._id%>?_method=PUT" method="post">
-            Name: <input type="text" name="name" value="<%=products.name%>"/><br/>
-            Description: <input type="text" name="description" value="<%=products.description%>"/><br/>
-            price: <input type="number" name="price" value="<%=products.price%>"/><br/>
-            qty: <input type="number" name="qty" value="<%=products.qty%>"/><br/>
-            Image: <input type="text" name="img" value="<%=products.img%>"/><br/>
+            <span class="bolded">Name:</span><input type="text" name="name" value="<%=products.name%>"/><br/>
+            <span class="bolded">Description:</span><input type="text" name="description" value="<%=products.description%>"/><br/>
+            <span class="bolded">Price:</span><input type="number" name="price" value="<%=products.price%>"/><br/>
+            <span class="bolded">Qty:</span><input type="number" name="qty" value="<%=products.qty%>"/><br/>
+            <span class="bolded">Image:</span><input type="text" name="img" value="<%=products.img%>"/><br/>
     
-            <input type="submit" name="" value="Submit Changes"/>
+            <input class ="waves-effect waves-light btn" type="submit" name="" value="Submit Changes"/>
          <%- include('./partials/footer.ejs')%>     
     </body>
 </html>
