@@ -10,30 +10,25 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <h1 class="h1-show"><%=products.name%></h1><br/>
-        <div class = "row" >
-            <div class="div-show">
+        <div class="row">
+            <div class="col s6 push-s3">
                 <img src="<%=products.img%>"><br/>
                 <span class="bolded">Description:</span><%=products.description%><br/>
                 <span class="bolded">Price:</span><%=products.price%><br/>
                 <span class="bolded">Qty:</span><%=products.qty%><br/>
-            </div>
-            <div>
                 <button class ="waves-effect waves-light btn">Buy this RIGHT now!</button>
             </div>
-            <div class="button-under-buy">
-                <a  class="waves-effect waves-light btn" href="/products/<%= products._id %>/edit">EDIT</a>
-                <form action="/products/<%=products._id%>?_method=DELETE" method="POST">
-                    <input class="waves-effect waves-light btn" type="submit" value="DELETE"/>
-                </form>
-            </div>
-           
-           
-            
-          
-            
-           
-     
+
         </div>
-            <%- include('./partials/footer.ejs')%>     
+        <footer>
+            <%- include('./partials/footer.ejs')%>  
+            <div class="foot">
+                <a  class="waves-effect amber waves-light btn" href="/products/<%= products._id %>/edit"><span class="purple-text darken-3">EDIT</span></a>
+                <form class="delete" action="/products/<%=products._id%>?_method=DELETE" method="POST">
+                    <input class="waves-effect amber waves-light btn" type="submit" value="DELETE"/>
+                </form> 
+            </div>     
+        </footer>
+               
     </body>
 </html>
