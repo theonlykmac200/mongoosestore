@@ -21,18 +21,7 @@
                     <span class="bolded">Price:</span>
                     <%=products.price%><br />
                         <span class="bolded">Qty:</span>
-                        <!-- if its 0 qty show out of stock -->
-                            <% if (product.qty <=0) { %>
-                                <h3>Out of Stock</h3>
-                                %<} %>
-                                <!-- if more than zero make it subtract one from qty when buy button is clicked -->
-                                    <% if(product.qty> 0 && form === POST) {%>
-                                        <% product.qty= product.qty - 1 %>
-                                            return <%=products.qty%><br />
-                            <form action="/products/<%-products.qty -1%>?_method=DELETE" method="POST">:
-                                <input class="waves-effect amber waves-light btn" type="submit" value="Buy Cider Now" />
-                            </form>
-                            <%}%>
+                        <%=products.qty%><br />
 
             </div>
 
