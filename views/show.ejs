@@ -4,31 +4,50 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <![endif]-->
 <html>
-    <%- include('./partials/head.ejs')%>
-    <body class ="#ede7f6 deep-purple lighten-5">
+<%- include('./partials/head.ejs')%>
+
+    <body class="#ede7f6 deep-purple lighten-5">
         <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <h1 class="h1-show"><%=products.name%></h1><br/>
+        <h1 class="h1-show">
+            <%=products.name%>
+        </h1><br />
         <div class="row">
             <div class="col s6 push-s3">
-                <img src="<%=products.img%>"><br/>
-                <span class="bolded">Description:</span><%=products.description%><br/>
-                <span class="bolded">Price:</span><%=products.price%><br/>
-                <span class="bolded">Qty:</span><%=products.qty%><br/>
-                <button class ="waves-effect waves-light btn">Buy this RIGHT now!</button>
+                <img src="<%=products.img%>"><br />
+                <span class="bolded">Description:</span>
+                <%=products.description%><br />
+                    <span class="bolded">Price:</span>
+                    <%=products.price%><br />
+                        <span class="bolded">Qty:</span>
+                        <!-- if its 0 qty show out of stock -->
+                            <% if (product.qty <=0) { %>
+                                <h3>Out of Stock</h3>
+                                %<} %>
+                                <!-- if more than zero make it subtract one from qty when buy button is clicked -->
+                                    <% if(product.qty> 0 && form === POST) {%>
+                                        <% product.qty= product.qty - 1 %>
+                                            return <%=products.qty%><br />
+                            <form action="/products/<%-products.qty -1%>?_method=DELETE" method="POST">:
+                                <input class="waves-effect amber waves-light btn" type="submit" value="Buy Cider Now" />
+                            </form>
+                            <%}%>
+
             </div>
 
         </div>
         <footer>
-            <%- include('./partials/footer.ejs')%>  
-            <div class="foot">
-                <a  class="waves-effect amber waves-light btn" href="/products/<%= products._id %>/edit"><span class="purple-text darken-3">EDIT</span></a>
-                <form class="delete" action="/products/<%=products._id%>?_method=DELETE" method="POST">
-                    <input class="waves-effect amber waves-light btn" type="submit" value="DELETE"/>
-                </form> 
-            </div>     
+            <%- include('./partials/footer.ejs')%>
+                <div class="foot">
+                    <a class="waves-effect amber waves-light btn" href="/products/<%= products._id %>/edit"><span
+                            class="purple-text darken-3">EDIT</span></a>
+                    <form class="delete" action="/products/<%=products._id%>?_method=DELETE" method="POST">
+                        <input class="waves-effect amber waves-light btn" type="submit" value="DELETE" />
+                    </form>
+                </div>
         </footer>
-               
+
     </body>
+
 </html>
