@@ -22,12 +22,21 @@
                     <%=products.price%><br />
                         <span class="bolded">Qty:</span>
                         <%=products.qty%><br />
-                    <!-- if products are 0 show out of stock -->
+                            <!-- if products are 0 show out of stock -->
+                            <% if (products.qty <=0) { %>
+                                <h4>Out of Stock</h4>
+                                <!-- else show number and if buy button is clicks show one less -->
+                                <% } %>
+                                    <% if (products.qty> 0) {%>
+                                        <div>
+                                            <form class="buy-button"
+                                                action="/products/buy/<%=products._id%>?_method=PUT" method="post">
+                                                <input class="waves-effect amber waves-light btn" type="submit"
+                                                    value="Buy This Now">
+                                            </form>
+                                        </div>
+                                        <% } %>
 
-                    <!-- else show number and if buy button is clicks show one less -->
-                    <form class ="buy-button" action="/products/buy/<%=products._id%>?_method=PUT" method="post">
-                        <input class ="waves-effect amber waves-light btn" type="submit" value="Buy This Now">
-                    </form>
             </div>
 
         </div>
