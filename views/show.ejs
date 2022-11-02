@@ -22,7 +22,12 @@
                     <%=products.price%><br />
                         <span class="bolded">Qty:</span>
                         <%=products.qty%><br />
+                    <!-- if products are 0 show out of stock -->
 
+                    <!-- else show number and if buy button is clicks show one less -->
+                    <form class ="buy-button" action="/products/buy/<%=products._id%>?_method=PUT" method="post">
+                        <input class ="waves-effect amber waves-light btn" type="submit" value="Buy This Now">
+                    </form>
             </div>
 
         </div>
@@ -31,7 +36,7 @@
                 <div class="foot">
                     <a class="waves-effect amber waves-light btn" href="/products/<%= products._id %>/edit"><span
                             class="purple-text darken-3">EDIT</span></a>
-                    <form class="delete" action="/products/<%=products._id%>?_method=DELETE" method="POST">
+                    <form class="delete" action="/products/<%=products._id%>?_method=DELETE" method="post">
                         <input class="waves-effect amber waves-light btn" type="submit" value="DELETE" />
                     </form>
                 </div>

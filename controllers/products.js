@@ -23,6 +23,8 @@ productRouter.delete("/:id", (req, res) => {
         console.log(err)
     })
 })
+
+
 //update
 productRouter.put("/:id", (req, res) => {
     Products.findByIdAndUpdate(
@@ -34,6 +36,21 @@ productRouter.put("/:id", (req, res) => {
         }
     )
 })
+//buy button ---- notes for future self from office hours.  findbyid doesn't need the req.body but findbyidandupdate would.  One will update via body the other I need to do the math like I had. 
+productRouter.put("/buy/:id", (req, res) => { // need to put params last in path 
+    console.log("hi")
+    Products.findById(
+        req.params.id, 
+        (err, boughtProduct) => {
+            console.log(boughtProduct.qty)
+            boughtProduct.qty -=1;  //dont forget the = in -=
+            console.log(boughtProduct.qty)
+            boughtProduct.save();
+            res.redirect(`/products/${req.params.id}`)
+        }
+    )
+})
+
 
 // create
 productRouter.post("/", (req, res) => {
