@@ -8,7 +8,7 @@ const productController = require("./controllers/products")
 
 
 require("dotenv").config()
-const PORT = process.env.PORT
+const PORT = 3000
 
 // Database Connection
 mongoose.connect(process.env.DATABASE_URL, {
