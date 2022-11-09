@@ -3,6 +3,13 @@ const productRouter = express.Router()
 const Products = require("../models/products")
 const productSeed = require("../models/seedData")
 
+productRouter.get("/seed", (req, res) => {
+    Products.deleteMany({}, (err, deletedProducts) => {
+        Products.create(productSeed, (error, data) => {
+            res.redirect("/products");
+        })
+    })
+})
 // Index
 
 productRouter.get("/", (req, res) => {
@@ -77,10 +84,5 @@ productRouter.get("/:id", (req, res) => {
 })
 
 // // Seed -not needed may delete later
-// productRouter.get("/seed", (req, res) => {
-//     Products.create(productSeed, (error, data) => {
-//       res.redirect("/products");
-//     });
-//   })
 
 module.exports = productRouter
